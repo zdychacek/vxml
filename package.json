@@ -1,0 +1,33 @@
+{
+  "name": "vxml",
+  "version": "0.0.0",
+  "description": "vxml",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zdychacek/vxml.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/zdychacek/vxml"
+  },
+  "homepage": "https://github.com/zdychacek/vxml",
+  "dependencies": {
+    "express": "~3.4.6",
+    "jade": "~0.35.0",
+    "express-namespace": "~0.1.1",
+    "q": "~0.9.7",
+    "co": "~3.0.2"
+  },
+  "devDependencies": {
+    "matchdep": "~0.3.0",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-nodemon": "~0.1.2",
+    "grunt-concurrent": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "node-inspector": "~0.6.2",
+    "class": "git+ssh://git@github.com:zdychacek/class.git#master"
+  }
+}

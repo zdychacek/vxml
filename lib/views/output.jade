@@ -1,0 +1,15 @@
+extends layout
+block body
+	var(name="id", expr="'#{id}'")
+	var(name="event", expr="'continue'")
+	var(name="sessionid", expr="'#{sessionid}'")
+
+	form(id="#{id}")
+		#{'block'}
+			!{renderView('prompt', { prompts: prompts || initialPrompt })}
+
+			submit(
+				next="#{nextUri}",
+				method=(submitMethod == 'post'? submitMethod : undefined),
+				namelist="id event sessionid"
+			)

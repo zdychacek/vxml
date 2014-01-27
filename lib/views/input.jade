@@ -1,0 +1,32 @@
+extends layout
+block body
+	var(name="id", expr="'#{id}'")
+	var(name="event", expr="'continue'")
+	var(name="result", expr="")
+	var(name="sessionid", expr="'#{sessionid}'")
+
+	form(id="#{id}")
+		field(
+			name="F_1",
+			type=(grammar.isBuiltIn()? GrammarHelper.builtinToXml(grammar.builtin) : undefined)
+		)
+
+			!{renderView('prompt', { prompts: initialPrompt })}
+
+			- if (!grammar.isBuiltIn()) {
+				- if (grammar.isExternalRef())
+						grammar(src="#{grammar.source}", type="#{grammar.type}")
+				- else
+						!{grammar.toXml()}
+			- }
+
+		filled
+			assign(name="result", expr="F_1")
+			submit(
+				next="#{nextUri}",
+				method=(submitMethod == 'post'? submitMethod : undefined),
+				namelist="id event result sessionid"
+			)
+
+		!{PromptHelper.noInput(noinputPrompts, nextUri)}
+		!{PromptHelper.noMatch(nomatchPrompts, nextUri)}
