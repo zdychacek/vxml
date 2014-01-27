@@ -18,7 +18,8 @@
     "jade": "~0.35.0",
     "express-namespace": "~0.1.1",
     "q": "~0.9.7",
-    "co": "~3.0.2"
+    "co": "~3.0.2",
+    "class": "git+ssh://git@github.com:zdychacek/class.git#master"
   },
   "devDependencies": {
     "matchdep": "~0.3.0",
@@ -27,7 +28,6 @@
     "grunt-nodemon": "~0.1.2",
     "grunt-concurrent": "~0.4.2",
     "grunt-contrib-watch": "~0.5.3",
-    "node-inspector": "~0.6.2",
-    "class": "git+ssh://git@github.com:zdychacek/class.git#master"
+    "node-inspector": "~0.6.2"
   }
 }
