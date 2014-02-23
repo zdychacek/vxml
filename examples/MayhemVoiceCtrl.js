@@ -40,11 +40,18 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 			new vxml.State('queueCommand', 'commandSent')
 				.addTransition('error', 'errSendingCommand')
 				.addOnEntryAction(function* (cf, state, event) {
+					var err = null;
+
 					try {
 						cf.services.push(event.data);
 						yield cf.fireEvent('continue');
 					}
 					catch (ex) {
+						// NOTE: jshint problem
+						err = ex;
+					}
+
+					if (err) {
 						yield cf.fireEvent('error');
 					}
 				})

@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 					'**/*.js',
 					'!node_modules/**/*.js'
 				],
-				//tasks: ['jshint']
+				tasks: ['jshint']
 			},
 		},
 		jshint: {
@@ -50,7 +50,9 @@ module.exports = function (grunt) {
 				'-W116': true,
 				'-W030': true,
 				// W093: Did you mean to return a conditional instead of an assignment?
-				'-W093': true
+				'-W093': true,
+				// W124: A generator function shall contain a yield statement.
+				'-W124': true
 			},
 			all: [
 				'**/*.js',
@@ -100,7 +102,7 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('default', [
-		//'jshint',
+		'jshint',
 		'concurrent:nodemon'
 	]);
 };
