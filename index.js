@@ -17,6 +17,7 @@ module.exports = {
 	Exit: require('./lib/Exit'),
 	Grammar: require('./lib/Grammar'),
 	GrammarHelper: require('./lib/GrammarHelper'),
+	Choices: require('./lib/Choices'),
 	Item: require('./lib/Item'),
 	Prompt: require('./lib/Prompt'),
 	Record: require('./lib/Record'),

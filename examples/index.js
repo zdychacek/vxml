@@ -83,5 +83,14 @@ vxml.Application.create({
 	}
 });
 
+vxml.Application.create({
+	server: app,
+	route: '/grammarTest',
+	controller: require('./GrammarTest'),
+	config: {
+		fetchTimeout: 999
+	}
+});
+
 server.listen(PORT);
 console.log('Express started on port ' + PORT);

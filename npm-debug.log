@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ondrej/v0.11.9/bin/node',
+1 verbose cli   '/home/ondrej/v0.11.9/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'node-inspector' ]
+2 info using npm@1.3.15
+3 info using node@v0.11.9
+4 verbose cache add [ 'node-inspector', null ]
+5 verbose cache add name=undefined spec="node-inspector" args=["node-inspector",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'node-inspector',
+6 verbose parsed url   path: 'node-inspector',
+6 verbose parsed url   href: 'node-inspector' }
+7 silly lockFile 4198ef9e-node-inspector node-inspector
+8 verbose lock node-inspector /home/ondrej/.npm/4198ef9e-node-inspector.lock
+9 silly lockFile 4198ef9e-node-inspector node-inspector
+10 silly lockFile 4198ef9e-node-inspector node-inspector
+11 verbose addNamed [ 'node-inspector', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile e68b88da-node-inspector node-inspector@
+14 verbose lock node-inspector@ /home/ondrej/.npm/e68b88da-node-inspector.lock
+15 silly addNameRange { name: 'node-inspector', range: '*', hasData: false }
+16 verbose url raw node-inspector
+17 verbose url resolving [ 'https://registry.npmjs.org/', './node-inspector' ]
+18 verbose url resolved https://registry.npmjs.org/node-inspector
+19 info trying registry request attempt 1 at 17:31:21
+20 verbose etag "620TWONAL6VUQ0AM5EEOTM6SO"
+21 http GET https://registry.npmjs.org/node-inspector
+22 info retry will retry, error on last attempt: Error: SELF_SIGNED_CERT_IN_CHAIN
+23 info trying registry request attempt 2 at 17:31:31
+24 verbose etag "620TWONAL6VUQ0AM5EEOTM6SO"
+25 http GET https://registry.npmjs.org/node-inspector
+26 info retry will retry, error on last attempt: Error: SELF_SIGNED_CERT_IN_CHAIN
+27 info trying registry request attempt 3 at 17:32:32
+28 verbose etag "620TWONAL6VUQ0AM5EEOTM6SO"
+29 http GET https://registry.npmjs.org/node-inspector
+30 silly registry.get cb [ 304, undefined ]
+31 verbose etag node-inspector from cache
+32 silly addNameRange number 2 { name: 'node-inspector', range: '*', hasData: true }
+33 silly addNameRange versions [ 'node-inspector',
+33 silly addNameRange   [ '0.0.1',
+33 silly addNameRange     '0.0.2',
+33 silly addNameRange     '0.0.3',
+33 silly addNameRange     '0.0.4',
+33 silly addNameRange     '0.1.0',
+33 silly addNameRange     '0.1.1',
+33 silly addNameRange     '0.1.2',
+33 silly addNameRange     '0.1.3',
+33 silly addNameRange     '0.1.4',
+33 silly addNameRange     '0.1.5',
+33 silly addNameRange     '0.1.6',
+33 silly addNameRange     '0.1.7',
+33 silly addNameRange     '0.1.8',
+33 silly addNameRange     '0.1.9',
+33 silly addNameRange     '0.1.10',
+33 silly addNameRange     '0.3.0',
+33 silly addNameRange     '0.3.1',
+33 silly addNameRange     '0.3.2',
+33 silly addNameRange     '0.3.3',
+33 silly addNameRange     '0.3.4',
+33 silly addNameRange     '0.4.0',
+33 silly addNameRange     '0.5.0',
+33 silly addNameRange     '0.6.0',
+33 silly addNameRange     '0.6.1',
+33 silly addNameRange     '0.6.2',
+33 silly addNameRange     '0.7.0-1',
+33 silly addNameRange     '0.2.0-beta1',
+33 silly addNameRange     '0.2.0-beta2',
+33 silly addNameRange     '0.2.0-beta3',
+33 silly addNameRange     '0.2.0-beta4',
+33 silly addNameRange     '0.3.0-preview1',
+33 silly addNameRange     '0.7.0-2' ] ]
+34 verbose addNamed [ 'node-inspector', '0.7.0-2' ]
+35 verbose addNamed [ '0.7.0-2', '0.7.0-2' ]
+36 silly lockFile 0130c0aa-node-inspector-0-7-0-2 node-inspector@0.7.0-2
+37 verbose lock node-inspector@0.7.0-2 /home/ondrej/.npm/0130c0aa-node-inspector-0-7-0-2.lock
+38 silly lockFile 29177f0a-ector-node-inspector-0-7-0-2-tgz https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+39 verbose lock https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz /home/ondrej/.npm/29177f0a-ector-node-inspector-0-7-0-2-tgz.lock
+40 verbose addRemoteTarball [ 'https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz',
+40 verbose addRemoteTarball   'e26d3c5ee74fe99fc5c8b2adb5634dac0ca86e81' ]
+41 info retry fetch attempt 1 at 17:32:32
+42 verbose fetch to= /home/ondrej/tmp/npm-21112-pgmQWKKU/1393605152248-0.26398498797789216/tmp.tgz
+43 http GET https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+44 error fetch failed https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+45 info retry will retry, error on last attempt: Error: SELF_SIGNED_CERT_IN_CHAIN
+46 info retry fetch attempt 2 at 17:32:42
+47 verbose fetch to= /home/ondrej/tmp/npm-21112-pgmQWKKU/1393605152248-0.26398498797789216/tmp.tgz
+48 http GET https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+49 error fetch failed https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+50 info retry will retry, error on last attempt: Error: SELF_SIGNED_CERT_IN_CHAIN
+51 info retry fetch attempt 3 at 17:33:42
+52 verbose fetch to= /home/ondrej/tmp/npm-21112-pgmQWKKU/1393605152248-0.26398498797789216/tmp.tgz
+53 http GET https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+54 error fetch failed https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+55 silly lockFile 29177f0a-ector-node-inspector-0-7-0-2-tgz https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+56 silly lockFile 29177f0a-ector-node-inspector-0-7-0-2-tgz https://registry.npmjs.org/node-inspector/-/node-inspector-0.7.0-2.tgz
+57 silly lockFile 0130c0aa-node-inspector-0-7-0-2 node-inspector@0.7.0-2
+58 silly lockFile 0130c0aa-node-inspector-0-7-0-2 node-inspector@0.7.0-2
+59 silly lockFile e68b88da-node-inspector node-inspector@
+60 silly lockFile e68b88da-node-inspector node-inspector@
+61 error Error: SELF_SIGNED_CERT_IN_CHAIN
+61 error     at TLSSocket.<anonymous> (_tls_wrap.js:773:36)
+61 error     at TLSSocket.EventEmitter.emit (events.js:95:17)
+61 error     at TLSSocket._finishInit (_tls_wrap.js:333:8)
+62 error If you need help, you may report this log at:
+62 error     <http://github.com/isaacs/npm/issues>
+62 error or email it to:
+62 error     <npm-@googlegroups.com>
+63 error System Linux 3.11.0-17-generic
+64 error command "/home/ondrej/v0.11.9/bin/node" "/home/ondrej/v0.11.9/bin/npm" "install" "-g" "node-inspector"
+65 error cwd /home/ondrej/myproj/vxml
+66 error node -v v0.11.9
+67 error npm -v 1.3.15
+68 verbose exit [ 1, true ]
