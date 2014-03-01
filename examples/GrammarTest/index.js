@@ -15,19 +15,17 @@ var GrammarTest = vxml.CallFlow.extend({
 			'maybe'
 		]);
 
-		// vxml.Grammar([ 'yes', 'no' ]);
-
 		var askModel = new vxml.Ask({
 			prompt: 'Ask something?',
 			grammar: choices
 		});
 
-		var askState = vxml.State.create('ask', askModel);
-		askState.addOnExitAction(function* (cf, state, event) {
-			console.log(JSON.stringify(event));
-		});
-
-		this.addState(askState);
+		this.addState(
+			vxml.State.create('ask', askModel)
+				.addOnExitAction(function* (cf, state, event) {
+					console.log(JSON.stringify(event));
+				})
+		);
 	}
 });
 
