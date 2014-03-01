@@ -24,7 +24,7 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('assist', new vxml.Ask({
 				prompt: new vxml.Prompt('How may I assist you?'),
-				answers: [ 'list', 'detail' ],
+				grammar: new vxml.Grammar([ 'list', 'detail' ]),
 				noinputPrompts: assistNoinputs,
 				nomatchPrompts: assistNomatches
 			}), 'queueCommand')
@@ -73,7 +73,7 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('doMore', new vxml.Ask({
 				prompt: 'May I assist you with anything else?',
-				answers: ['yes', 'no'],
+				grammar: new vxml.Grammar(['yes', 'no']),
 				noinputPrompts: doMoreNoinputs,
 				nomatchPrompts: doMoreNomatches
 			}))
