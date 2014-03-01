@@ -10,14 +10,8 @@ var GrammarTest = vxml.CallFlow.extend({
 
 	create: function* () {
 		var choices = new vxml.Choices([
-			{
-				items: [ 'yep', 'yeah', 'ya', 'yes', 'dtmf-1', 'dtmf-2', 'dtmf-3', 'dtmf-*' ],
-				tag: 'yes'
-			},
-			{
-				items: [ 'nope', 'nuh', 'dtmf-4', 'dtmf-#' ],
-				tag: 'no'
-			},
+			'yes',
+			'no',
 			'maybe'
 		]);
 
@@ -25,10 +19,13 @@ var GrammarTest = vxml.CallFlow.extend({
 
 		var askModel = new vxml.Ask({
 			prompt: 'Ask something?',
-			choices: choices
+			grammar: choices
 		});
 
 		var askState = vxml.State.create('ask', askModel);
+		askState.addOnExitAction(function* (cf, state, event) {
+			console.log(JSON.stringify(event));
+		});
 
 		this.addState(askState);
 	}
