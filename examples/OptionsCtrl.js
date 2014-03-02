@@ -2,9 +2,9 @@
 
 var vxml = require('../index');
 
-var AppCtrl = vxml.CallFlow.extend({
+var OptionsCtrl = vxml.CallFlow.extend({
 	constructor: function () {
-		AppCtrl.super.call(this);
+		OptionsCtrl.super.call(this);
 	},
 
 	create: function* () {
@@ -44,4 +44,4 @@ var AppCtrl = vxml.CallFlow.extend({
 	}
 });
 
-module.exports = AppCtrl;
+module.exports = OptionsCtrl;

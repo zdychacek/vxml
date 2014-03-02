@@ -10,22 +10,35 @@ var GrammarTest = vxml.CallFlow.extend({
 
 	create: function* () {
 		var choices = new vxml.Choices([
-			'yes',
-			'no',
+			{
+				items: ['yes', 'ya', 'dtmf-1', 'dtmf-*'],
+				tag: 'yes'
+			},
+			{
+				items: ['no', 'nope', 'dtmf-2', 'dtmf-#'],
+				tag: 'no'
+			},
 			'maybe'
 		]);
 
+		var repeatModel = new vxml.Exit(new vxml.Prompt([
+			'You have entered ',
+			new vxml.Var(this, 'input'),
+			new vxml.Silence('weak')
+		]));
+		var repeatState = vxml.State.create('repeat', repeatModel);
+
 		var askModel = new vxml.Ask({
-			prompt: 'Ask something?',
+			prompt: 'Enter yes or no.',
 			grammar: choices
 		});
+		var askState = vxml.State.create('ask', askModel, repeatState)
+			.addOnExitAction(function* (cf, state, event) {
+				cf.input = event.data;
+			});
 
-		this.addState(
-			vxml.State.create('ask', askModel)
-				.addOnExitAction(function* (cf, state, event) {
-					console.log(JSON.stringify(event));
-				})
-		);
+		this.addState(askState);
+		this.addState(repeatState);
 	}
 });
 

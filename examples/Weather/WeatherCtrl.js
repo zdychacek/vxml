@@ -3,9 +3,10 @@
 var vxml = require('../../index'),
 	WeatherService = require('./WeatherService');
 
-var WeatherVoiceCtrl = vxml.CallFlow.extend({
+var WeatherCtrl = vxml.CallFlow.extend({
+
 	constructor: function () {
-		WeatherVoiceCtrl.super.call(this);
+		WeatherCtrl.super.call(this);
 	},
 
 	create: function* () {
@@ -32,13 +33,13 @@ var WeatherVoiceCtrl = vxml.CallFlow.extend({
 
 		this.addState(getWeatherState);
 
-		var weatherPrompt = new vxml.Prompt();
-
-		weatherPrompt.audios.push(new vxml.TtsMessage('The temperature today is '));
-		weatherPrompt.audios.push(new vxml.Var(this, 'weather.temp', ' '));
-		weatherPrompt.audios.push(new vxml.Silence(1000));
-		weatherPrompt.audios.push(new vxml.TtsMessage('The conditions are '));
-		weatherPrompt.audios.push(new vxml.Var(this, 'weather.conditions'));
+		var weatherPrompt = new vxml.Prompt([
+			'The temperature today is ',
+			new vxml.Var(this, 'weather.temp', ' '),
+			new vxml.Silence(1000),
+			'The conditions are ',
+			new vxml.Var(this, 'weather.conditions')
+		]);
 
 		this.addState(
 			vxml.State.create('voiceWeather', new vxml.Say({
@@ -52,4 +53,4 @@ var WeatherVoiceCtrl = vxml.CallFlow.extend({
 	}
 });
 
-module.exports = WeatherVoiceCtrl;
+module.exports = WeatherCtrl;

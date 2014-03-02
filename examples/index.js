@@ -11,7 +11,7 @@ const fs = require('fs'),
 
 app.use(express.favicon());
 //app.use(express.logger({ stream: logFile }));
-//app.use(express.logger());
+app.use(express.logger());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.compress());
@@ -28,8 +28,8 @@ app.use(express.errorHandler({
 // vytvoreni aplikaci
 vxml.Application.create({
 	server: app,
-	route: '/app',
-	controller: require('./AppCtrl')
+	route: '/options',
+	controller: require('./OptionsCtrl')
 });
 
 vxml.Application.create({
@@ -46,29 +46,20 @@ vxml.Application.create({
 
 vxml.Application.create({
 	server: app,
-	route: '/mayhemVoice',
-	controller: require('./MayhemVoiceCtrl')
+	route: '/voiceMenu',
+	controller: require('./VoiceMenuCtrl')
 });
 
 vxml.Application.create({
 	server: app,
-	route: '/weatherVoice',
-	controller: require('./WeatherVoice/WeatherVoiceCtrl')
+	route: '/weather',
+	controller: require('./Weather/WeatherCtrl')
 });
 
 vxml.Application.create({
 	server: app,
 	route: '/dateDifference',
 	controller: require('./DateDifference/DateDifferenceCtrl'),
-	config: {
-		fetchtimeout: 999
-	}
-});
-
-vxml.Application.create({
-	server: app,
-	route: '/matrijoska',
-	controller: require('./Matrijoska/MatrijoskaCtrl'),
 	config: {
 		fetchtimeout: 999
 	}

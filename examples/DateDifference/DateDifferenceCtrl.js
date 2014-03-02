@@ -5,6 +5,7 @@ var Helpers = require('../Helpers'),
 	GetDateDtmfComponent = require('./GetDateDtmfComponent');
 
 var DateDifferenceCtrl = vxml.CallFlow.extend({
+
 	constructor: function () {
 		this.startDate = null;
 		this.finishDate = null;
@@ -12,7 +13,7 @@ var DateDifferenceCtrl = vxml.CallFlow.extend({
 		DateDifferenceCtrl.super.call(this);
 	},
 
-	create: function *() {
+	create: function* () {
 		var appProperties = {
 			inputmode: 'dtmf'
 		};
@@ -60,13 +61,12 @@ var DateDifferenceCtrl = vxml.CallFlow.extend({
 				})
 		);
 
-		var sayDiff = new vxml.Prompt();
-		sayDiff.audios = [
-			new vxml.TtsMessage('The difference between the start and finish dates is '),
+		var sayDiff = new vxml.Prompt([
+			'The difference between the start and finish dates is ',
 			new vxml.TtsMessage(new vxml.Var(this, 'daysDiff')),
-			new vxml.TtsMessage(' days.'),
+			' days.',
 			new vxml.Silence('1000s')
-		];
+		]);
 		sayDiff.bargein = false;
 
 		this.addState(

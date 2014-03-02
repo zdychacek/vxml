@@ -1,10 +1,12 @@
 'use strict';
 
 var fs = require('fs'),
+	Q = require('q'),
 	path = require('path'),
 	vxml = require('../index');
 
 var RecordingCtrl = vxml.CallFlow.extend({
+
 	constructor: function () {
 		RecordingCtrl.super.call(this);
 	},
@@ -14,26 +16,40 @@ var RecordingCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('getRecording', new vxml.Record('Please record your information after the beep.'), 'playback')
 			.addOnExitAction(function* (cf, state, event) {
-				cf.recordingUrl = event.data;
+				var bufferData = event.data,
+					fileName = (+new Date()) + '.wav',
+					absolutePath = __dirname + '/static/recordings/' + fileName;
+
+				yield Q.nfapply(fs.writeFile, [ absolutePath, bufferData ]);
+
+				cf.recordingUrl = '/static/recordings/' + fileName;
 			}));
 
-		var playbackPrompt = new vxml.Prompt('You recorded ');
-		playbackPrompt.audios.push(
+		var playbackPrompt = new vxml.Prompt([
+			'You recorded ',
 			new vxml.Audio(new vxml.Var(this, 'recordingUrl'), 'Error finding recording')
-		);
+		]);
 
 		this.addState(
 			vxml.State.create('playback', new vxml.Say(playbackPrompt), 'saveOrDelete')
 		);
 
 		this.addState(
-			vxml.State.create('saveOrDelete', new vxml.Ask(
-				new vxml.Prompt({
+			vxml.State.create('saveOrDelete', new vxml.Ask({
+				prompt: new vxml.Prompt({
 					text: 'Do you want to save your message?',
 					bargein: false
 				}),
-				['yes', 'no']
-			))
+				grammar: new vxml.Choices([
+				{
+					tag: 'yes',
+					items: [ 'yes', 'dtmf-1' ]
+				},
+				{
+					tag: 'no',
+					items: [ 'no', 'dtmf-2' ]
+				}])
+			}))
 			.addTransition('noinput', 'saveOrDelete')
 			.addTransition('nomatch', 'saveOrDelete')
 			.addTransition('continue', 'messageSaved', function (result) {
@@ -47,9 +63,7 @@ var RecordingCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('messageDeleted', new vxml.Exit('Your message has been deleted. Goodbye.'))
 			.addOnEntryAction(function* (cf, state, event) {
-				var filePath = path.join(process.cwd(), cf.recordingUrl);
-
-				fs.unlinkSync(filePath);
+				fs.unlinkSync(__dirname + cf.recordingUrl);
 			})
 		);
 

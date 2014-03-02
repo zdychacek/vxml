@@ -3,11 +3,12 @@
 var vxml = require('../index'),
 	Helpers = require('./Helpers');
 
-var MayhemVoiceCtrl = vxml.CallFlow.extend({
+var VoiceMenuCtrl = vxml.CallFlow.extend({
+
 	constructor: function () {
 		this.services = [];
 
-		MayhemVoiceCtrl.super.call(this);
+		VoiceMenuCtrl.super.call(this);
 	},
 
 	create: function* () {
@@ -24,7 +25,7 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('assist', new vxml.Ask({
 				prompt: new vxml.Prompt('How may I assist you?'),
-				grammar: new vxml.Grammar([ 'list', 'detail' ]),
+				grammar: new vxml.Choices([ 'list', 'detail' ]),
 				noinputPrompts: assistNoinputs,
 				nomatchPrompts: assistNomatches
 			}), 'queueCommand')
@@ -73,7 +74,7 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 		this.addState(
 			vxml.State.create('doMore', new vxml.Ask({
 				prompt: 'May I assist you with anything else?',
-				grammar: new vxml.Grammar(['yes', 'no']),
+				grammar: new vxml.Choices(['yes', 'no']),
 				noinputPrompts: doMoreNoinputs,
 				nomatchPrompts: doMoreNomatches
 			}))
@@ -96,4 +97,4 @@ var MayhemVoiceCtrl = vxml.CallFlow.extend({
 	}
 });
 
-module.exports = MayhemVoiceCtrl;
+module.exports = VoiceMenuCtrl;
