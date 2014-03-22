@@ -28,10 +28,7 @@ var MenuExampleCtrl = vxml.CallFlow.extend({
 
 		var menuState =
 			vxml.State.create('menu', new vxml.Ask({
-				prompt: [
-					'Press one, two or three.',
-					'huhuhu'
-				],
+				prompt: 'Press one, two or three.',
 				grammar: new vxml.BuiltinGrammar({
 					type: 'digits',
 					length: 1
