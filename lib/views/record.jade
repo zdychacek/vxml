@@ -1,23 +1,22 @@
 extends layout
 block body
-  var(name="id", expr="'#{id}'")
-  var(name="event", expr="'continue'")
-  var(name="sessionid", expr="'#{sessionid}'")
+	var(name="event", expr="'continue'")
+	var(name="sessionid", expr="'#{sessionid}'")
 
-  form(id="#{id}")
-    record(
-      name="callersMessage",
-      beep="#{beep}",
-      maxtime="#{maxtime}s",
-      finalsilence="#{finalsilence}",
-      type="#{type}"
-    )
-      !{renderView('prompt', { prompts: prompts })}
+	form(id="#{id}")
+		record(
+			name="callersMessage",
+			beep="#{beep}",
+			maxtime="#{maxtime}s",
+			finalsilence="#{finalsilence}",
+			type="#{type}"
+		)
+			!{renderView('prompt', { prompts: prompts })}
 
-    filled
-      submit(
-        expr="'#{nextUri}?id=' + id + '&event=' + event + '&sessionid=' + sessionid",
-        method="post",
-        namelist="callersMessage",
-        enctype="multipart/form-data"
-      )
+		filled
+			submit(
+				expr="'#{nextUri}?event=' + event + '&sessionid=' + sessionid",
+				method="post",
+				namelist="callersMessage",
+				enctype="multipart/form-data"
+			)

@@ -5,6 +5,7 @@ var Class = require('class'),
 	vxml = require('../../index');
 
 var GetDateDtmfComponent = vxml.CallFlow.extend({
+
 	constructor: function (askDatePrompt) {
 		GetDateDtmfComponent.super.call(this);
 

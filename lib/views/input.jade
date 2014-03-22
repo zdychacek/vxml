@@ -1,6 +1,5 @@
 extends layout
 block body
-	var(name="id", expr="'#{id}'")
 	var(name="event", expr="'continue'")
 	var(name="result", expr="")
 	var(name="sessionid", expr="'#{sessionid}'")
@@ -10,7 +9,7 @@ block body
 			name="F_1",
 			type=(grammar.isBuiltIn? grammar.toXml() : undefined)
 		)
-			!{renderView('prompt', { prompts: initialPrompt })}
+			!{renderView('prompt', { prompts: prompts })}
 
 			- if (!grammar.isBuiltIn) {
 					!{grammar.toXml()}
@@ -21,7 +20,7 @@ block body
 			submit(
 				next="#{nextUri}",
 				method=(submitMethod == 'post'? submitMethod : undefined),
-				namelist="id event result sessionid"
+				namelist="event result sessionid"
 			)
 
 		!{PromptHelper.noInput(noinputPrompts, nextUri)}
