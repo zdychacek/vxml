@@ -26,8 +26,8 @@ var VoiceMenuCtrl = vxml.CallFlow.extend({
 			vxml.State.create('assist', new vxml.Ask({
 				prompt: new vxml.Prompt('How may I assist you?'),
 				grammar: new vxml.Choices([ 'list', 'detail' ]),
-				noinputPrompts: assistNoinputs,
-				nomatchPrompts: assistNomatches
+				noInputPrompts: assistNoinputs,
+				noMatchPrompts: assistNomatches
 			}), 'queueCommand')
 			.addTransition('nomatch', 'didNotUnderstand')
 			.addTransition('noinput', 'didNotUnderstand')
@@ -75,8 +75,8 @@ var VoiceMenuCtrl = vxml.CallFlow.extend({
 			vxml.State.create('doMore', new vxml.Ask({
 				prompt: 'May I assist you with anything else?',
 				grammar: new vxml.Choices(['yes', 'no']),
-				noinputPrompts: doMoreNoinputs,
-				nomatchPrompts: doMoreNomatches
+				noInputPrompts: doMoreNoinputs,
+				noMatchPrompts: doMoreNomatches
 			}))
 			.addTransition('continue', 'goodbye', function (result) {
 				return result == 'no';
